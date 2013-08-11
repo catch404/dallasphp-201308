@@ -1,0 +1,17 @@
+{
+    "require": {
+        "react\/react": "0.3.*",
+        "monticello\/object": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Yokai\\": "lib\/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http:\/\/github.com\/monticello\/object"
+        }
+    ]
+}
