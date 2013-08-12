@@ -1,0 +1,20 @@
+#jar {
+	background:#eee;
+	height:300px;
+
+	position:relative;
+}
+
+#console {
+	background:#eee;
+	height:100px;
+	overflow-y:scroll;
+}
+
+.firefly {
+	background:#ddd;
+	height:32px;
+	width:32px;
+
+	position:absolute;
+}
