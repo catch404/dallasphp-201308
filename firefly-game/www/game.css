@@ -1,20 +1,52 @@
-#jar {
-	background:#eee;
-	height:300px;
+table {
+	width:100%;
+}
 
+#jar {
 	position:relative;
+
+	height:600px;
+	width:350px;
+}
+
+#jar > div:nth-child(1) {
+	position:absolute;
+	height:100%;
+	width:100%;
+	z-index:9001;
+
+	background:url(/gfx/jar.png);
 }
 
 #console {
 	background:#eee;
-	height:100px;
+	height:600px;
 	overflow-y:scroll;
 }
 
 .firefly {
-	background:#ddd;
+	position:absolute;
+	z-index:9000;
+
+	background:url(/gfx/firefly.png);
+	display:none;
+	font-family:arial,helvetica,sans-serif;
+	font-size:10px;
 	height:32px;
 	width:32px;
+}
 
+.firefly > div {
 	position:absolute;
+	top:0px;left:0px;
+
+	background-image:url(/gfx/glow.png);
+	display:none;
+	height:100%;
+	width:100%;
+}
+
+.firefly.player {
+	background:url(/gfx/firefly-player.png);
+	color:#a00;
 }

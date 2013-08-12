@@ -46,6 +46,7 @@ class Jar implements Ratchet\MessageComponentInterface {
 		switch($obj->Type) {
 			case 'register': { $this->Handle_Register($from,$obj); break; }
 			case 'move': { $this->Handle_Move($from,$obj); break; }
+			case 'lamp': { $this->Handle_Lamp($from,$obj); break; }
 			default: {
 				echo "WARNING: unhandled type: {$obj->Type}", PHP_EOL;
 				break;
@@ -84,19 +85,36 @@ class Jar implements Ratchet\MessageComponentInterface {
 
 		echo "%%% client registration", PHP_EOL;
 
+		$x = rand(60,260);
+		$y = rand(160,480);
+
 		// notify the client that they can join the game.
+		$from->FireflyOnline = true;
+		$from->PosX = $x;
+		$from->PosY = $y;
 		$this->SendTo($from,[
 			'Type'     => 'welcome',
 			'ID'       => $from->FireflyID,
-			'Position' => [0,0]
+			'Position' => [$x,$y]
 		]);
 
 		// notify the other clients that someone has joined.
 		$this->SendToAll([
 			'Type'     => 'join',
 			'ID'       => $from->FireflyID,
-			'Position' => [0,0]
+			'Position' => [$x,$y]
 		],$from);
+
+		// notify the current client about the others.
+		foreach($this->Clients as $client) {
+			if($client === $from) continue;
+
+			$this->SendTo($from,[
+				'Type'     => 'join',
+				'ID'       => $client->FireflyID,
+				'Position' => [$client->PosX,$client->PosY]
+			]);
+		}
 
 		return;
 	}
@@ -121,13 +139,26 @@ class Jar implements Ratchet\MessageComponentInterface {
 			case 'right': { $from->PosX+=4; break; }
 		}
 
-		if($from->PosY < 0) $from->PosY = 0;
-		if($from->PosX < 0) $from->PosX = 0;
+		if($from->PosY < 160) $from->PosY = 160;
+		if($from->PosY > 480) $from->PosY = 480;
+		if($from->PosX < 60) $from->PosX = 60;
+		if($from->PosX > 260) $from->PosX = 260;
 
 		$this->SendToAll([
 			"Type" => "move",
 			"ID" => $from->FireflyID,
 			"Position" => [$from->PosX,$from->PosY]
+		]);
+
+		return;
+	}
+
+	public function Handle_Lamp($from,$obj) {
+
+		$this->SendToAll([
+			"Type"  => "lamp",
+			"ID"    => $from->FireflyID,
+			"State" => $obj->State
 		]);
 
 		return;

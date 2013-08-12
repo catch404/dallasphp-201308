@@ -3,6 +3,7 @@ var Game = {
 
 	Socket: null,
 	Online: false,
+	Lamp:false,
 
 	Init: function() {
 		jQuery(document).bind('keypress',function(e){
@@ -12,12 +13,33 @@ var Game = {
 			// 97  a
 			// 115 s
 			// 100 d
+			// 66  b
 
 			switch(e.keyCode) {
 				case 119: { Game.Send_Move('up'); break; }
 				case 97: { Game.Send_Move('left'); break; }
 				case 115: { Game.Send_Move('down'); break; }
 				case 100: { Game.Send_Move('right'); break; }
+			}
+
+			return;
+		});
+
+		jQuery(document).bind('keydown',function(e){
+			if(!Game.Online) return;
+
+			switch(e.keyCode) {
+				case 66: { Game.Send_Lamp('on'); break; }
+			}
+
+			return;
+		});
+
+		jQuery(document).bind('keyup',function(e){
+			if(!Game.Online) return;
+
+			switch(e.keyCode) {
+				case 66: { Game.Send_Lamp('off'); break; }
 			}
 
 			return;
@@ -60,6 +82,7 @@ var Game = {
 			case 'join': { Game.Handle_Join(obj); break; }
 			case 'leave': { Game.Handle_Leave(obj); break; }
 			case 'move': { Game.Handle_Move(obj); break; }
+			case 'lamp': { Game.Handle_Lamp(obj); break; }
 		}
 
 		return;
@@ -81,26 +104,42 @@ var Game = {
 	Handle_Welcome: function(obj) {
 		Game.Online = true;
 		Game.ConsoleLog('You have entered the jar.');
-		Game.SpawnFirefly(obj.ID,obj.Position[0],obj.Position[1]);
+		Game.ConsoleLog('You are firefly #' + obj.ID);
+		Game.SpawnFirefly(obj.ID,obj.Position[0],obj.Position[1],true);
 		return;
 	},
 
 	Handle_Join: function(obj) {
 		Game.ConsoleLog('Firefly ' + obj.ID + ' has entered the jar.');
+		Game.SpawnFirefly(obj.ID,obj.Position[0],obj.Position[1],false);
 		return;
 	},
 
 	Handle_Leave: function(obj) {
 		Game.ConsoleLog('Firefly ' + obj.ID + ' has left the jar.');
+		Game.DespawnFirefly(obj.ID);
 		return;
 	},
 
 	Handle_Move: function(obj) {
-		Game.ConsoleLog('Firefly ' + obj.ID + ' has moved.');
+		//Game.ConsoleLog('Firefly ' + obj.ID + ' has moved.');
 		jQuery('#firefly-'+obj.ID).css({
 			'top':obj.Position[1]+'px',
 			'left':obj.Position[0]+'px'
 		});
+		return;
+	},
+
+	Handle_Lamp: function(obj) {
+		if(obj.State == 'on') {
+			Game.ConsoleLog('Firefly ' + obj.ID + ' is a bright bug.');
+			jQuery('#firefly-'+obj.ID+' > div').fadeIn('fast');
+		} else {
+			Game.ConsoleLog('Firefly ' + obj.ID + ' is rather dim.');
+			jQuery('#firefly-'+obj.ID+' > div').fadeOut('fast');
+		}
+
+
 		return;
 	},
 
@@ -117,19 +156,50 @@ var Game = {
 		return;
 	},
 
+	Send_Lamp: function(state) {
+		if(state == 'on' && Game.Lamp) return;
+
+		Game.Socket.send(JSON.stringify({
+			"Type":'lamp',
+			"State":((state=='on')?('on'):('off'))
+		}));
+
+		Game.Lamp = ((state=='on')?(true):(false));
+
+		return;
+	},
+
 	////////////////
 	////////////////
 
 	Players: [],
-	SpawnFirefly: function(id,x,y) {
+	SpawnFirefly: function(id,x,y,player) {
 		Game.Players[id] = {
 			X:x,
 			Y:y
 		}
 
-		jQuery('#jar').append(
-			'<div id="firefly-' + id + '" class="firefly"></div>'
-		);
+		jQuery('#jar')
+		.append('<div id="firefly-' + id + '" class="firefly">' + id + '<div></div></div>');
+
+		jQuery('#firefly-'+id)
+		.addClass((player)?('player'):('other'))
+		.css({'top':y+'px','left':x+'px'})
+		.fadeIn('slow');
+
+		return;
+	},
+
+	DespawnFirefly: function(id) {
+
+		jQuery('#firefly-'+id)
+		.fadeOut('slow')
+		.queue(function(){
+			jQuery(this).dequeue();
+			jQuery(this).remove();
+		});
+
+		return;
 	}
 
 };
