@@ -6,30 +6,16 @@ var Game = {
 	Lamp:false,
 
 	Init: function() {
-		jQuery(document).bind('keypress',function(e){
-			if(!Game.Online) return;
-
-			// 119 w
-			// 97  a
-			// 115 s
-			// 100 d
-			// 66  b
-
-			switch(e.keyCode) {
-				case 119: { Game.Send_Move('up'); break; }
-				case 97: { Game.Send_Move('left'); break; }
-				case 115: { Game.Send_Move('down'); break; }
-				case 100: { Game.Send_Move('right'); break; }
-			}
-
-			return;
-		});
 
 		jQuery(document).bind('keydown',function(e){
 			if(!Game.Online) return;
 
 			switch(e.keyCode) {
 				case 66: { Game.Send_Lamp('on'); break; }
+				case 87: { Game.Send_Move('up'); break; }
+				case 65: { Game.Send_Move('left'); break; }
+				case 68: { Game.Send_Move('right'); break; }
+				case 83: { Game.Send_Move('down'); break; }
 			}
 
 			return;
