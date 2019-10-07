@@ -1,22 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
     ],
-    "hash": "c3b6c826b4ff88dc32f7e633fb0420b7",
+    "content-hash": "7c91d6b721d1f9f7177c43d023a57e5f",
     "packages": [
         {
             "name": "evenement/evenement",
             "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/igorw/evenement",
-                "reference": "v1.0.0"
+                "url": "https://github.com/igorw/evenement.git",
+                "reference": "fa966683e7df3e5dd5929d984a44abfbd6bafe8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/igorw/evenement/zipball/v1.0.0",
-                "reference": "v1.0.0",
+                "url": "https://api.github.com/repos/igorw/evenement/zipball/fa966683e7df3e5dd5929d984a44abfbd6bafe8d",
+                "reference": "fa966683e7df3e5dd5929d984a44abfbd6bafe8d",
                 "shasum": ""
             },
             "require": {
@@ -43,21 +44,21 @@
             "keywords": [
                 "event-dispatcher"
             ],
-            "time": "2012-05-30 08:01:08"
+            "time": "2012-05-30T15:01:08+00:00"
         },
         {
             "name": "guzzle/parser",
-            "version": "v3.7.2",
+            "version": "v3.9.2",
             "target-dir": "Guzzle/Parser",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/parser.git",
-                "reference": "v3.7.2"
+                "url": "https://github.com/Guzzle3/parser.git",
+                "reference": "6874d171318a8e93eb6d224cf85e4678490b625c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/parser/zipball/v3.7.2",
-                "reference": "v3.7.2",
+                "url": "https://api.github.com/repos/Guzzle3/parser/zipball/6874d171318a8e93eb6d224cf85e4678490b625c",
+                "reference": "6874d171318a8e93eb6d224cf85e4678490b625c",
                 "shasum": ""
             },
             "require": {
@@ -87,62 +88,66 @@
                 "message",
                 "url"
             ],
-            "time": "2013-07-11 22:46:03"
+            "abandoned": "guzzle/guzzle",
+            "time": "2014-02-05T18:29:46+00:00"
         },
         {
-            "name": "monticello/object",
-            "version": "dev-master",
+            "name": "netherphp/object",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/monticello/object.git",
-                "reference": "c9525ea788da75162ff304ce8134c82e9a711563"
+                "url": "https://github.com/netherphp/object.git",
+                "reference": "9bbbee05dc6d7ed272577988fc8d0e813a20388a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monticello/object/zipball/c9525ea788da75162ff304ce8134c82e9a711563",
-                "reference": "c9525ea788da75162ff304ce8134c82e9a711563",
+                "url": "https://api.github.com/repos/netherphp/object/zipball/9bbbee05dc6d7ed272577988fc8d0e813a20388a",
+                "reference": "9bbbee05dc6d7ed272577988fc8d0e813a20388a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "m/Object/Object.php"
-                ]
+                "psr-0": {
+                    "Nether\\": "src/"
+                }
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
             "authors": [
                 {
                     "name": "Bob Majdak Jr",
-                    "email": "bob@majdak.net",
-                    "homepage": "http://majdak.net",
+                    "email": "bob@nether.io",
+                    "homepage": "http://nether.io",
                     "role": "developer"
                 }
             ],
             "description": "A little object builder.",
             "keywords": [
-                "globals",
+                "object",
                 "php"
             ],
-            "support": {
-                "source": "https://github.com/monticello/object/tree/master",
-                "issues": "https://github.com/monticello/object/issues"
-            },
-            "time": "2013-08-01 03:37:51"
+            "time": "2019-07-06T00:54:02+00:00"
         },
         {
             "name": "react/promise",
-            "version": "v1.0.4",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "v1.0.4"
+                "reference": "eefff597e67ff66b719f8171480add3c91474a1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/v1.0.4",
-                "reference": "v1.0.4",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/eefff597e67ff66b719f8171480add3c91474a1e",
+                "reference": "eefff597e67ff66b719f8171480add3c91474a1e",
                 "shasum": ""
             },
             "require": {
@@ -151,13 +156,16 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
                 "psr-0": {
                     "React\\Promise": "src/"
-                }
+                },
+                "files": [
+                    "src/React/Promise/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -166,26 +174,24 @@
             "authors": [
                 {
                     "name": "Jan Sorgalla",
-                    "email": "jsorgalla@googlemail.com",
-                    "homepage": "http://sorgalla.com",
-                    "role": "maintainer"
+                    "email": "jsorgalla@gmail.com"
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2013-04-03 14:05:55"
+            "time": "2016-03-07T13:46:50+00:00"
         },
         {
             "name": "react/react",
-            "version": "v0.3.3",
+            "version": "v0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/react.git",
-                "reference": "v0.3.3"
+                "reference": "3b9b9d64a277c2f9a090fb8166183b4edd59ac09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/react/zipball/v0.3.3",
-                "reference": "v0.3.3",
+                "url": "https://api.github.com/repos/reactphp/react/zipball/3b9b9d64a277c2f9a090fb8166183b4edd59ac09",
+                "reference": "3b9b9d64a277c2f9a090fb8166183b4edd59ac09",
                 "shasum": ""
             },
             "require": {
@@ -228,23 +234,15 @@
                 "event-loop",
                 "reactor"
             ],
-            "time": "2013-07-09 01:55:25"
+            "time": "2014-03-30T16:31:26+00:00"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "monticello/object": 20
-    },
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
 }

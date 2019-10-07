@@ -3,7 +3,7 @@
 namespace Yokai;
 use \Yokai as Yokai;
 use \React as React;
-use \m as m;
+use \Nether as Nether;
 
 class Server extends React\Socket\Server {
 
@@ -47,8 +47,8 @@ class Server extends React\Socket\Server {
 	////////////////////////////////////////////////////////////////////////////
 
 	public function __construct($opt=null) {
-		$opt = new m\Object($opt,[
-			'Name' => 'yokaid.local',
+		$opt = new Nether\Object\Mapped($opt,[
+			'Name' => 'dev.majdak.net',
 			'Port' => 6667,
 			'MOTD' => sprintf(
 				'%s/conf/motd.txt',
@@ -79,7 +79,7 @@ class Server extends React\Socket\Server {
 		if(!is_numeric($this->Port))
 		throw new Yokai\Error\InvalidPortNumber($this->Port);
 
-		try { $this->listen($this->Port); }
+		try { $this->listen($this->Port,'dev.majdak.net'); }
 		catch(\Exception $e) {
 			throw new Yokai\Error\PortUnavailable($this->Port);
 		}
