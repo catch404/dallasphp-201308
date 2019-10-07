@@ -7,6 +7,10 @@ table {
 
 	height:600px;
 	width:350px;
+
+	margin-left: auto;
+	margin-right: auto;
+
 }
 
 #jar > div:nth-child(1) {
@@ -50,3 +54,9 @@ table {
 	background:url(/gfx/firefly-player.png);
 	color:#a00;
 }
+
+.row.tight
+{ margin-left: -0.25rem; margin-right: -0.25rem; }
+
+.row.tight *[class^='col']
+{ padding-left: .25rem; padding-right: .25rem; }

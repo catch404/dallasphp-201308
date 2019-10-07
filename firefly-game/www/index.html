@@ -1,16 +1,51 @@
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>Firefly Game</title>
+	<link rel="stylesheet" type="text/css" href="/bootstrap4/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/fontawesome4/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="/game.css" />
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/game.js"></script>
 	<script type="text/javascript">
-Game.Init();
-Game.Connect('localhost',7890);
+		jQuery(document)
+		.ready(function(){
+			Game.Init();
+			Game.Connect('dev.majdak.net',7890);
+			return;
+		});
 	</script>
 </head>
 <body>
 
+<div class="container pt-4 pb-4">
+
+	<div class="row justify-content-center">
+		<div class="col-md-auto">
+			<div class="row tight justify-content-center mb-4">
+				<div class="col-3 mb-2"><button class="CtrlMove btn btn-lg btn-block btn-dark" data-move="up"><i class="fa fa-fw fa-chevron-up"></i></button></div>				
+				<div class="col-3 mb-2"><button class="CtrlMove btn btn-lg btn-block btn-dark" data-move="down"><i class="fa fa-fw fa-chevron-down"></i></button></div>
+				<div class="col-3 mb-2"><button class="CtrlMove btn btn-lg btn-block btn-dark" data-move="left"><i class="fa fa-fw fa-chevron-left"></i></button></div>
+				<div class="col-3 mb-2"><button class="CtrlMove btn btn-lg btn-block btn-dark" data-move="right"><i class="fa fa-fw fa-chevron-right"></i></button></div>
+				<div class="col-12"><button class="CtrlLamp btn btn-lg btn-block btn-dark"><i class="fa fa-fw fa-lightbulb-o"></i></button></div>
+			</div>
+			<div id="jar">
+				<div></div>
+			</div>			
+		</div>
+		<div class="col-md">
+			<ul class="list-unstyled">
+				<li><b>Keyboard:</b></li>
+				<li>Move: WASD (up, left, down, right)</li>
+				<li>Butt Lamp: Hold B.</li>
+			</ul>
+			<pre id="console" class="w-100"></pre>
+		</div>
+	</div>
+
+	<!--
 <table>
 	<tr>
 		<td valign="top" style="width:1px;">
@@ -20,13 +55,28 @@ Game.Connect('localhost',7890);
 		</td>
 		<td valign="top">
 			<ul>
+				<li><b>Keyboard:</b></li>
 				<li>Move: WASD (up, left, down, right)</li>
 				<li>Butt Lamp: Hold B.</li>
 			</ul>
+
+			<div class="row justify-content-center mb-4">
+				<div class="col-auto"><button class="CtrlMove btn btn-dark" data-move="up"><i class="fa fa-fw fa-chevron-up"></i></button></div>				
+			</div>
+			<div class="row justify-content-center mb-4">
+				<div class="col-auto"><button class="CtrlMove btn btn-dark" data-move="left"><i class="fa fa-fw fa-chevron-left"></i></button></div>
+				<div class="col-auto"><button class="CtrlMove btn btn-dark" data-move="right"><i class="fa fa-fw fa-chevron-right"></i></button></div>
+			</div>
+			<div class="row justify-content-center mb-4">
+				<div class="col-auto"><button class="CtrlMove btn btn-dark" data-move="down"><i class="fa fa-fw fa-chevron-down"></i></button></div>				
+			</div>
+		
 			<pre id="console"></pre>
 		</td>
 	</tr>
 </table>
+	-->
+</div>
 
 </body>
 </html>

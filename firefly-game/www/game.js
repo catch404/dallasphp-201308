@@ -30,6 +30,16 @@ var Game = {
 
 			return;
 		});
+
+		jQuery('.CtrlMove')
+		.on('mousedown',function(){ Game.Send_Move(jQuery(this).attr('data-move')); });
+
+		jQuery('.CtrlLamp')
+		.on('click',function(){
+			Game.Send_Lamp('on');
+			setTimeout(function(){ Game.Send_Lamp('off'); },3000);
+		})
+
 	},
 
 	Connect: function(host,port) {
